@@ -1,15 +1,14 @@
-# Use the official lightweight Python image
 FROM python:3.10
 
-# Set the working directory in the container
-WORKDIR /app.py
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-# Install dependencies
-COPY requirements.txt /app.py/
+WORKDIR /app
+
+COPY . /app
+
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy the rest of the application code into the container
-COPY . /app.py/
+EXPOSE 5000
 
-# Command to run the application
-CMD ["flask", "run", "--host=0.0.0.0"] 
+CMD ["python", "app.py", "--host=0.0.0.0"]
