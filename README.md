@@ -12,5 +12,5 @@ Connection to DB using pgAdmin:
     Host = postgresql_container
     Port = 5432
     Database = postgres
-    Username = admin
+    Username = postgres
     Pass = Azerty123!!!
