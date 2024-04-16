@@ -5,6 +5,7 @@ version: '3'
 services:
   flask:
     build: .
+    container_name: flask_container
     ports:
       - "5000:5000"
     environment:
@@ -12,9 +13,11 @@ services:
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
     depends_on:
       - db
+      - ollama
 
   db:
     image: postgres:alpine
+    container_name: postgresql_container
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
@@ -24,6 +27,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4
+    container_name: pgadmin_container
     ports:
       - "8888:80"
     environment:
@@ -36,6 +40,7 @@ services:
 
   ollama:
     image: ollama/ollama
+    container_name: ollama_container
     ports:
       - "11434:11434"
     depends_on:

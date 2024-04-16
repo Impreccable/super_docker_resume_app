@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
 </head>
 <body>
     <div class="container">
@@ -17,9 +16,9 @@
             <p>You just have to write or paste the text you want to summarize and then press the button to proceed</p>
         </div>
         <div class="mt-4 text-center">
-            <button onclick="window.location.href='/about'" class="btn btn-secondary mr-2">About Us</button>
-            <button onclick="window.location.href='/'" class="btn btn-secondary mr-2">Home page</button>
-            <button onclick="window.location.href='/contact'" class="btn btn-secondary mr-2">Contact Us</button>
+            <button onclick="window.location.href='/about'" class="btn">About Us</button>
+            <button onclick="window.location.href='/'" class="btn">Home page</button>
+            <button onclick="window.location.href='/contact'" class="btn">Contact Us</button>
         </div>
     </div>
 </body>
