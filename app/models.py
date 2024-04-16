@@ -23,7 +23,7 @@ class DB_result_text(db.Model):
 
 
 
-class submitted_text(db.Model):
+class Submitted_text(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     created_at = db.Column(db.Timestamp(), unique=True, nullable=False)
     real_text = db.Column(db.String(), unique=True, nullable=False)
