@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from extensions import app, db
 
-from models import DB_result_text
+from models import *
 
 @app.route('/')
 def home():
@@ -23,9 +23,14 @@ def contacted():
 def model():
     return render_template('model.html')
 
-def create_tables(): #create all tables from models.py
+def create_tables():
     with app.app_context():
-        db.create_all()
+        try:
+            db.create_all()
+            for table in db.metadata.tables.keys():
+                print(f"Table '{table}' created successfully.")
+        except Exception as e:
+            print("An error occurred while creating tables:", e)
 
 if __name__ == '__main__': 
     
