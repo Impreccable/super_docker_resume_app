@@ -1,10 +1,27 @@
-from sqlalchemy.ext.declarative import declarative_base
-from sqlalchemy import create_engine, Column, Integer, String, Date, TIMESTAMP
-from sqlalchemy.orm import sessionmaker
+from extensions import db
 
-Base = declarative_base()
+class DB_result_text(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    generated_text = db.Column(db.String(), unique=True, nullable=False)
+    generated_text_length = db.Column(db.Integer, nullable=False)
+    word_frequency = db.Column(db.JSON, nullable=True)
+    text_subject = db.Column(db.String(), nullable=False)
 
-class Contact(Base):
+    def __repr__(self):
+        return '<DB_result_text %r>' % self.generated_text
+    
+    @classmethod
+    def insert_data(cls, generated_text, generated_text_length, word_frequency, text_subject):
+        new_data = cls(
+            generated_text=generated_text,
+            generated_text_length=generated_text_length,
+            word_frequency=word_frequency,
+            text_subject=text_subject
+        )
+        db.session.add(new_data)
+        db.session.commit()
+        
+class Contact(db.Model):
     __tablename__ = 'contact'
 
     id = Column(Integer, primary_key=True)
@@ -36,7 +53,7 @@ class Contact(Base):
         return contacts
 
 
-class Statistic(Base):
+class Statistic(db.Model):
     __tablename__ = 'statistic'
 
     ip = Column(Integer)
@@ -61,8 +78,3 @@ class Statistic(Base):
         session.close()
         return statistics
 
-
-DATABASE_URI = "postgres+psycopg2://${POSTGRES_USER}:<${POSTGRES_PASSWORD}>@<postgresql_container>:5432/postgres"
-from sqlalchemy import create_engine
-engine = create_engine(DATABASE_URI)
-Base.metadata.create_all(engine)
