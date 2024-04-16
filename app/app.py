@@ -1,7 +1,7 @@
 from flask import Flask, render_template
 from extensions import app, db
-from models import DB_result_text
 
+from models import DB_result_text
 
 @app.route('/')
 def home():
@@ -22,7 +22,6 @@ def contacted():
 @app.route('/model')
 def model():
     return render_template('model.html')
-
 
 def create_tables(): #create all tables from models.py
     with app.app_context():
