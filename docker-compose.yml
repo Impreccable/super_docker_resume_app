@@ -66,8 +66,6 @@ services:
     #         - driver: nvidia
     #           capabilities: [gpu]
 
-
-
 volumes:
   db_data:
   pgadmin_data:

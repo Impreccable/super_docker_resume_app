@@ -1,0 +1,44 @@
+/* Styling for header */
+header {
+    background-color: #6349A1;
+    color: #fff;
+    padding: 1rem;
+    text-align: center; /* Centre le contenu du header */
+}
+
+header h1 {
+    margin: 0;
+}
+
+/* Style pour les boutons */
+.btn {
+    background-image: linear-gradient(to right, #4e9dd0, #418dbf);  
+    color: white; /* Applique une couleur blanche au texte du bouton */
+    border: none;
+    padding: 10px 20px; /* Taille du padding pour donner une taille adéquate aux boutons */
+    margin: 10px; /* Marge entre les boutons */
+    cursor: pointer;
+}
+
+
+/* Style pour le logo */
+header img {
+    max-width: 200px; /* Ajuste la largeur maximale du logo */
+    height: auto; /* Permet au logo de conserver son ratio d'aspect */
+    display: block; /* Centre le logo horizontalement */
+    margin: 0 auto; /* Centre le logo horizontalement */
+}
+
+footer {
+    background-color: #f0f0f0; /* Couleur de fond du footer */
+    padding: 20px; /* Espace intérieur du footer */
+    position: fixed; /* Fixe le footer en bas de la fenêtre */
+    bottom: 0; /* Place le footer en bas */
+    width: 100%; /* Largeur maximale du footer */
+    text-align: center; /* Alignement du contenu au centre */
+}
+.image-container {
+    display: flex; /* Utilise Flexbox pour le positionnement */
+    justify-content: center; /* Centre le contenu horizontalement */
+    margin-top: 20px; /* Espacement au-dessus de l'image */
+}
