@@ -14,3 +14,21 @@ Connection to DB using pgAdmin:
     Database = postgres
     Username = postgres
     Pass = Azerty123!!!
+
+
+**************************
+CREATING NETWORK (useless)
+**************************
+links:
+
+    - https://medium.com/@augustineozor/understanding-docker-bridge-network-6e499da50f65
+    - https://dockerlabs.collabnix.com/networking/A2-bridge-networking.html
+
+1) while docker is running: docker network create my-network
+
+
+*****************
+   API MISTRAL
+*****************
+
+1) deleted container ollama and pulled  mistral one : https://docs.mistral.ai/self-deployment/vllm/
