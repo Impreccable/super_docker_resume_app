@@ -27,7 +27,7 @@ class DB_Submitted_Text(db.Model):
     __tablename__ = 'submitted_text'
 
     id = db.Column(db.Integer, primary_key=True)
-    created_at = db.Column(db.Timestamp(), unique=True, nullable=False)
+    created_at = db.Column(db.DateTime(), unique=True, nullable=False)
     real_text = db.Column(db.String(), unique=True, nullable=False)
     real_text_length = db.Column(db.Integer, nullable=False)
     word_frequency = db.Column(db.JSON, nullable=True)
