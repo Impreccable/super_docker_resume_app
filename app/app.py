@@ -33,8 +33,11 @@ def contact():
 def contacted():
     return render_template('contacted.html')
 
-@app.route('/model')
+@app.route('/model', methods=['GET', 'POST'])
 def model():
+    if request.method == 'POST':
+        return request.form['submitted-text']
+
     return render_template('model.html')
 
 def create_tables():

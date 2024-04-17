@@ -14,12 +14,14 @@
         </div>
         <div class="submission">
             <p>You just have to write or paste the text you want to summarize and then press the button to proceed</p>
-            <div class="form-text">
-                <textarea class="form-control" name="Write your text" rows="5" placeholder="Write your text" required></textarea>
+            <form action="{{ url_for('model') }}" method="POST">
+                <div class="form-text">
+                    <textarea class="form-control" name="submitted-text" rows="5" placeholder="Write your text" required></textarea>
                 </div><br>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary">Send</button>
-            </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Send</button>
+                </div>
+            </form>
         </div>
         <div class="generationn">
             <p>Your summary here : </p>
