@@ -2,7 +2,7 @@ version: '3'
 
 services:
   flask:
-    build: ./app
+    build: .
     container_name: flask_container
     ports:
       - "5000:5000"
@@ -45,6 +45,13 @@ services:
       - "11434:11434"
     depends_on:
       - db
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           capabilities: [gpu]
+
 
 volumes:
   db_data:

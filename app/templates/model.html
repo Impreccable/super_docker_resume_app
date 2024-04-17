@@ -14,8 +14,8 @@
         </div>
         <div class="submission">
             <p>You just have to write or paste the text you want to summarize and then press the button to proceed</p>
-            
-            <form action="{{ url_for('model') }}" method="post">
+
+            <form action="{{ url_for('model') }}" method="POST">
                 <div class="form-text">
                     <textarea class="form-control" name="input_text" rows="5" placeholder="Write your text" required></textarea> 
                 </div><br>
