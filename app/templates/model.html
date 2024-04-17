@@ -10,23 +10,25 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>Summarize your text in a click</h1>
+            <h1>Ask a Question, Get an Answer</h1>
         </div>
         <div class="submission">
-            <p>You just have to write or paste the text you want to summarize and then press the button to proceed</p>
+            <p>Enter your question below:</p>
             <form action="{{ url_for('model') }}" method="post">
                 <div class="form-text">
-                    <textarea class="form-control" name="input_text" rows="5" placeholder="Write your text" required></textarea> 
+                    <textarea class="form-control" name="input_text" rows="5" placeholder="Enter your question" required></textarea>
+                    <!-- Add hidden input field for the static prompt -->
+                    <input type="hidden" name="static_prompt" value="Ask a Question">
                 </div><br>
                 <div class="text-center">
-                    <button type="submit" class="btn btn-primary">Send</button>
+                    <button type="submit" class="btn btn-primary">Get Answer</button>
                 </div>
             </form>
         </div>
-        <div class="generationn">
-            <p>Your summary here:</p>
-             <div class="form-text">
-                <textarea class="form-control" name="text_gen" rows="5">{{ processed_text }}</textarea> 
+        <div class="generation">
+            <p>Answer:</p>
+            <div class="form-text">
+                <textarea class="form-control" name="text_gen" >{{ processed_text }}</textarea>
             </div>
         </div><br>
         <div class="mt-4 text-center">
