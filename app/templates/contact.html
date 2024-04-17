@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <div class="container">
@@ -27,13 +27,16 @@
                         </div>
                     </form>
                 </div>
-                <div class="mt-4 text-center">
-                    <button onclick="window.location.href='/'" class="btn">Home</button>
-                    <button onclick="window.location.href='/model'" class="btn">Launch service</button>
-                    <button onclick="window.location.href='/about'" class="btn">About Us</button>
-                </div>
+
             </div>
         </div> 
     </div>
+    <footer>
+            
+        <button onclick="window.location.href='/about'" class="btn">About Us</button>
+        <button onclick="window.location.href='/model'" class="btn">Launch service</button>
+        <button onclick="window.location.href='/contact'" class="btn">Contact Us</button>
+
+    </footer>
 </body>
 </html>

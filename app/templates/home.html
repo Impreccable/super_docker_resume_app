@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <link rel="stylesheet" type= "text/css" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <header>
@@ -14,15 +14,16 @@
         <p>Notre service de résumé de texte vous permet de gagner du temps en synthétisant vos documents rapidement et efficacement.</p>
         <p>Essayez-le dès maintenant en soumettant votre texte ci-dessous :</p>
     </header>
-    <div class="container">
-        <div class="header">
-            <h1>Home Page</h1>
-        </div>
-        <div class="mt-4 text-center">
-            <button onclick="window.location.href='/about'" class="btn">About Us</button>
-            <button onclick="window.location.href='/model'" class="btn">Launch service</button>
-            <button onclick="window.location.href='/contact'" class="btn">Contact Us</button>
-        </div>
-    </div>
+    <div class="image-container"></div>
+        <img src="{{ url_for('static', filename='image.png') }}"  alt="image" width="200" height="200">
+    </div>    
+    
+    <footer>
+        <button onclick="window.location.href='/about'" class="btn">About Us</button>
+        <button onclick="window.location.href='/model'" class="btn">Launch service</button>
+        <button onclick="window.location.href='/contact'" class="btn">Contact Us</button>
+      
+    </footer>
+    
 </body>
 </html>
