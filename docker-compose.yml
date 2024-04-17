@@ -11,7 +11,7 @@ services:
       - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
     depends_on:
       - db
-      - vllm
+      - ollama
 
   db:
     image: postgres:alpine
@@ -36,11 +36,25 @@ services:
     volumes:
       - pgadmin_data:/var/lib/pgadmin
 
-  vllm:
-    image: ghcr.io/mistralai/mistral-src/vllm:latest
-    container_name: vllm_container
-    environment:
-      - HF_TOKEN=${HF_TOKEN}
+  # vllm:
+  #   image: ghcr.io/mistralai/mistral-src/vllm:latest
+  #   container_name: vllm_container
+  #   environment:
+  #     - HF_TOKEN=${HF_TOKEN}
+  #   ports:
+  #     - "11434:11434"
+  #   depends_on:
+  #     - db
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #           - driver: nvidia
+  #             capabilities: [gpu]
+
+  ollama:
+    image: ollama/ollama
+    container_name: ollama_container
     ports:
       - "11434:11434"
     depends_on:
@@ -53,14 +67,8 @@ services:
     #           capabilities: [gpu]
 
 
+
 volumes:
   db_data:
   pgadmin_data:
 
-  # ollama:
-  #   image: ollama/ollama
-  #   container_name: ollama_container
-  #   ports:
-  #     - "11434:11434"
-  #   depends_on:
-  #     - db
