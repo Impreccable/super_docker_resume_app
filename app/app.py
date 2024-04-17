@@ -1,8 +1,9 @@
-from flask import render_template, request, render_template, redirect, url_for, request, jsonify
+from flask import render_template, request, redirect, url_for, jsonify
 import requests
 from extensions import app, db
 from datetime import datetime
 from models import *
+import json
 
 @app.route('/')
 def home():
@@ -43,25 +44,33 @@ def create_tables():
         except Exception as e:
             print("An error occurred while creating tables:", e)
 
-### api part
+### API part
+
 @app.route('/model', methods=['GET', 'POST'])
 def model():
     if request.method == 'POST':
-        input_text = request.form['input_text'] #its from model.html <div class="submission">
-        hf_token = "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"
+        try:
+            input_text = request.form['input_text']
+            static_prompt = request.form['static_prompt']
 
-        response = requests.post('http://localhost:11434', json={'text': input_text}, headers={'Authorization': f'Bearer {hf_token}'})
-        result = response.json()
+            response = requests.post('http://ollama_container:11434/api/generate', json={
+                "model": "llama2",
+                "prompt": input_text
+            })
 
-        processed_text = result['output']
+            if response.status_code == 200:
+                generated_text = json.loads(response.text).get('generated_text', 'Error: No generated text found')
+            else:
+                generated_text = f"Error: {response.status_code} - {response.text}"
 
-        return render_template('model.html', processed_text=processed_text)
+            return render_template('model.html', processed_text=generated_text, static_prompt=static_prompt)
+        except Exception as e:
+            return f"An error occurred: {e}"
 
-    return render_template('model.html')
+    elif request.method == 'GET':
 
+        return render_template('model.html', processed_text='', static_prompt='Sumup the given text')
+        
 if __name__ == '__main__': 
-    
-    create_tables()
-    
+    #create_tables()
     app.run(debug=True, host='0.0.0.0')
-    

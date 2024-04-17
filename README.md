@@ -28,7 +28,20 @@ links:
 
 
 *****************
-   API MISTRAL
+   API OLLAMA
 *****************
 
-1) deleted container ollama and pulled  mistral one : https://docs.mistral.ai/self-deployment/vllm/
+1) docker-compose up --build
+2) go inside the container: docker exec -it ollama_container /bin/bash
+3) inside the container :   ollama pull ollama2 (4Gb)
+4) update:                  docker exec -it ollama_container apt-get update
+5) pull container:          docker exec -it ollama_container apt-get install -y python3
+
+
+testing promt:
+
+1) execute container flask
+2) curl http://ollama_container:11434/api/generate -d '{
+  "model": "llama2",
+  "prompt": "Why is the sky blue?"
+    }'
