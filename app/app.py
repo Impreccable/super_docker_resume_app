@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, render_template, redirect, url_for
+from flask import render_template, request, render_template, redirect, url_for, request, jsonify
+import requests
 from extensions import app, db
 from datetime import datetime
 from models import *
@@ -33,10 +34,6 @@ def contact():
 def contacted():
     return render_template('contacted.html')
 
-@app.route('/model')
-def model():
-    return render_template('model.html')
-
 def create_tables():
     with app.app_context():
         try:
@@ -46,9 +43,25 @@ def create_tables():
         except Exception as e:
             print("An error occurred while creating tables:", e)
 
+### api part
+@app.route('/model', methods=['GET', 'POST'])
+def model():
+    if request.method == 'POST':
+        input_text = request.form['input_text'] #its from model.html <div class="submission">
+        hf_token = "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"
+
+        response = requests.post('http://localhost:11434', json={'text': input_text}, headers={'Authorization': f'Bearer {hf_token}'})
+        result = response.json()
+
+        processed_text = result['output']
+
+        return render_template('model.html', processed_text=processed_text)
+
+    return render_template('model.html')
+
 if __name__ == '__main__': 
     
     create_tables()
-       
+    
     app.run(debug=True, host='0.0.0.0')
     
