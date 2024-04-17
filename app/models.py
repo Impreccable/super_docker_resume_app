@@ -36,7 +36,7 @@ class DB_Submitted_Text(db.Model):
         return '<SubmittedText %r>' % self.real_text
     
     @classmethod
-    def insert_data(cls, created_at, real_text, real_text_length, word_frequency):
+    def insert_submitted_text(cls, created_at, real_text, real_text_length, word_frequency):
         new_data = cls(
             created_at=created_at,
             real_text=real_text,

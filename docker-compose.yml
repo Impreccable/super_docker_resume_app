@@ -59,6 +59,13 @@ services:
       - "11434:11434"
     depends_on:
       - db
+    # deploy:
+    #   resources:
+    #     reservations:
+    #       devices:
+    #         - driver: nvidia
+    #           capabilities: [gpu]
+
 
 
 volumes:
