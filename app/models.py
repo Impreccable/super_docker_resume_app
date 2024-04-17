@@ -57,7 +57,7 @@ class DB_Contact(db.Model):
     phone = db.Column(db.String())
     text = db.Column(db.String())
 
-    def __init__(self, created_at, ip, name, email, phone, text):
+    def __init__(self, created_at, ip, name, email, text, phone=None):
         self.created_at = created_at
         self.ip = ip
         self.name = name
@@ -66,7 +66,7 @@ class DB_Contact(db.Model):
         self.text = text
 
     @classmethod
-    def insert_contact(cls, created_at, ip, name, email, phone, text):
+    def insert_contact(cls, created_at, ip, name, email, text, phone=None):
         new_contact = cls(created_at=created_at, ip=ip, name=name, email=email, phone=phone, text=text)
         db.session.add(new_contact)
         db.session.commit()
