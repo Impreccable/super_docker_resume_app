@@ -5,14 +5,25 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
-    <title>Home</title>
+    <title>À propos de WYM.inc</title>
 
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>About us</h1>
-        </div>   
+    <header>
+        <h1>WYM.inc - Résumé de Texte Simplifié</h1>
+        <img src="{{ url_for('static', filename='logo.png') }}"  alt="logo" width="200" height="200">
+    </header>
+    <section>
+        <h2>Notre Entreprise</h2>
+        <p>WYM.inc est une entreprise innovante spécialisée dans la simplification du processus de résumé de texte. Nous avons développé une technologie avancée qui permet de synthétiser rapidement et efficacement n'importe quel document en quelques clics.</p>
+    </section>
+    <section>
+        <h2>Pourquoi Nous Choisir ?</h2>
+        <p>Nous offrons une solution pratique et rapide pour résumer vos textes, qu'ils soient longs ou courts. Notre algorithme de résumé est basé sur les dernières avancées en traitement du langage naturel, garantissant des résultats précis et pertinents.</p>
+        <p>De plus, notre équipe est composée d'experts passionnés qui travaillent constamment à améliorer notre service et à répondre aux besoins de nos clients.</p>
+    </section>
+    
+    <div class="container"> 
         <div class="mt-4 text-center">
             <button onclick="window.location.href='/'" class="btn">Home page</button>
             <button onclick="window.location.href='/model'" class="btn">Launch service</button>
