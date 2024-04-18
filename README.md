@@ -33,10 +33,14 @@ links:
 
 1) docker-compose up --build
 2) go inside the container: docker exec -it ollama_container /bin/bash
-3) inside the container :   ollama pull ollama2 (4Gb)
+3) inside the container :   ollama pull llama2 (4Gb)
 4) update:                  docker exec -it ollama_container apt-get update
 5) pull container:          docker exec -it ollama_container apt-get install -y python3
 
+or : after docker compouse up interminal : 
+curl http://localhost:11434/api/pull -d '{
+  "name": "llama2"
+}'
 
 testing promt:
 

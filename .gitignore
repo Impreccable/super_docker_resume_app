@@ -2,3 +2,4 @@ venv
 .env
 
 app/templates/base.html
+.streamlit/secrets.toml

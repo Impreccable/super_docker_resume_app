@@ -20,6 +20,8 @@ services:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
       - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - "5432:5432"
     volumes:
       - db_data:/var/lib/postgresql/data
 
@@ -36,21 +38,7 @@ services:
     volumes:
       - pgadmin_data:/var/lib/pgadmin
 
-  # vllm:
-  #   image: ghcr.io/mistralai/mistral-src/vllm:latest
-  #   container_name: vllm_container
-  #   environment:
-  #     - HF_TOKEN=${HF_TOKEN}
-  #   ports:
-  #     - "11434:11434"
-  #   depends_on:
-  #     - db
-  #   deploy:
-  #     resources:
-  #       reservations:
-  #         devices:
-  #           - driver: nvidia
-  #             capabilities: [gpu]
+
 
   ollama:
     image: ollama/ollama
@@ -66,7 +54,34 @@ services:
     #         - driver: nvidia
     #           capabilities: [gpu]
 
+  streamlit:
+    build: ./monitoring
+    container_name: streamlit_container
+    ports:
+      - "8501:8501"
+    environment:
+      - CONTAINER_ON=1
+    depends_on:
+      - db
+
 volumes:
   db_data:
   pgadmin_data:
 
+
+
+  # vllm:
+  #   image: ghcr.io/mistralai/mistral-src/vllm:latest
+  #   container_name: vllm_container
+  #   environment:
+  #     - HF_TOKEN=${HF_TOKEN}
+  #   ports:
+  #     - "11434:11434"
+  #   depends_on:
+  #     - db
+  #   deploy:
+  #     resources:
+  #       reservations:
+  #         devices:
+  #           - driver: nvidia
+  #             capabilities: [gpu]
