@@ -61,7 +61,7 @@ def model():
             input_text = request.form['input_text']
             static_prompt = request.form['static_prompt']
 
-            response = requests.post('http://ollama_container:11434/api/generate', json={
+            response = requests.post('http://ollama:11434/api/generate', json={
                 "model": "llama2",
                 "prompt": input_text
             })
